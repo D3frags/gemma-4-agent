@@ -14,7 +14,7 @@ parser.add_argument("--verbose", action="store_true", help="Enable verbose outpu
 
 
 def verbose_output(args, response):
-    print(f"User Prompt: {args.user_prompt}")
+    print(f"User prompt: {args.user_prompt}")
     print(f"Prompt tokens: {response.usage_metadata.prompt_token_count}")
     print(f"Response tokens: {response.usage_metadata.candidates_token_count}")
     print(f"{response.text}")
@@ -36,9 +36,6 @@ def main():
     if response.usage_metadata is None:
         raise RuntimeError("")
     verbose_output(args, response) if args.verbose else normal_output(response)
-    # print(f"Prompt tokens: {response.usage_metadata.prompt_token_count}")
-    # print(f"Response tokens: {response.usage_metadata.candidates_token_count}")
-    # print(response.text)
 
 
 if __name__ == "__main__":
