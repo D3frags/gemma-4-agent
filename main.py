@@ -40,8 +40,8 @@ def main():
     args = parser.parse_args()
     messages = [types.Content(role="user", parts=[types.Part(text=args.user_prompt)])]
     response = client.models.generate_content(
-        # model="gemma-4-26b-a4b-it",
-        model="gemini-2.5-flash",
+        model="gemma-4-26b-a4b-it",
+        # model="gemini-2.5-pro",
         contents=messages,
         # config=types.GenerateContentConfig(system_instruction=system_prompt),
         config=types.GenerateContentConfig(
