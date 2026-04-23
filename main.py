@@ -5,6 +5,8 @@ from dotenv import load_dotenv
 from google import genai
 from google.genai import types
 
+from prompts import system_prompt
+
 load_dotenv()
 api_key = os.environ.get("GEMINI_API_KEY")
 
@@ -31,6 +33,7 @@ def main():
     response = client.models.generate_content(
         model="gemma-4-26b-a4b-it",
         contents=messages,
+        config=types.GenerateContentConfig(system_instruction=system_prompt),
     )
 
     if response.usage_metadata is None:
