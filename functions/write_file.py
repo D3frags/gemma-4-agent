@@ -27,14 +27,10 @@ def write_file(working_directory, file_path, content):
         target_file = os.path.normpath(os.path.join(working_dir_abs, file_path))
         print(target_file)
         if os.path.isdir(target_file):
-            return Exception(
-                f'Error: Cannot write to "{file_path}" as it is a directory'
-            )
+            return f'Error: Cannot write to "{file_path}" as it is a directory'
         if not os.path.commonpath([working_dir_abs, target_file]) == working_dir_abs:
-            return Exception(
-                f'Error: Cannot read "{file_path}" as it is outside the permitted working directory'
-            )
-        os.makedirs(file_path, exist_ok=True)
+            return f'Error: Cannot read "{file_path}" as it is outside the permitted working directory'
+        os.makedirs(os.path.dirname(target_file), exist_ok=True)
         with open(target_file, "w") as f:
             f.write(content)
             return f'Successfully wrote to "{file_path}" ({len(content)} characters written)'

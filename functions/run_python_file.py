@@ -5,7 +5,7 @@ from google.genai import types
 
 schema_run_python_file = types.FunctionDeclaration(
     name="run_python_file",
-    description="Run a specified python file. Example: 'run main.py'",
+    description="Run a specified python file. Example: 'run main.py' If it says to run a file, use this one. Not get_fil_info.",
     parameters=types.Schema(
         type=types.Type.OBJECT,
         properties={
